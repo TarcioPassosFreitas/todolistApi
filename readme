@@ -1,162 +1,185 @@
-# Todo List API - Gerenciador de Tarefas
+Todo List API - Gerenciador de Tarefas
 
-Bem-vindo ao projeto **Todo List API**, uma API desenvolvida com o framework **FastAPI** para o gerenciamento de tarefas. Esta aplicação permite criar, listar, atualizar e excluir tarefas, além de oferecer uma documentação automática, fácil de usar e acessar. O objetivo deste projeto é fornecer uma base robusta para uma aplicação de gerenciamento de tarefas, seguindo boas práticas de desenvolvimento, como **arquitetura limpa** e **código limpo**.
+   
 
-## Funcionalidades
+Bem-vindo ao projeto Todo List API, uma API desenvolvida com o framework FastAPI para o gerenciamento de tarefas. Esta aplicação permite criar, listar, atualizar e excluir tarefas, além de oferecer uma documentação automática, fácil de usar e acessar. O objetivo deste projeto é fornecer uma base robusta para uma aplicação de gerenciamento de tarefas, seguindo boas práticas de desenvolvimento, como arquitetura limpa e código limpo.
 
-- **Criação de Tarefas**: Permite a criação de novas tarefas com campos como título, descrição, data de criação e status (pendente, em andamento, concluída).
-- **Listagem de Tarefas**: Endpoints para listar todas as tarefas ou filtrar por status.
-- **Atualização de Tarefas**: Permite a atualização dos detalhes de uma tarefa específica, incluindo a alteração do status.
-- **Exclusão de Tarefas**: Endpoints para excluir tarefas específicas.
+✨ Funcionalidades
 
-## Tecnologias Utilizadas
+📝 Criação de Tarefas: Permite a criação de novas tarefas com campos como título, descrição, data de criação e status (pendente, em andamento, concluída).
 
-- **Framework**: [FastAPI](https://fastapi.tiangolo.com/)
-- **Banco de Dados**: SQLite ou PostgreSQL, utilizando [SQLAlchemy](https://www.sqlalchemy.org/) como ORM.
-- **Validação e Tipagem**: Utilização do [Pydantic](https://pydantic-docs.helpmanual.io/) para validação e tipagem dos dados.
-- **Documentação Automática**: Documentação gerada automaticamente pelo FastAPI, acessível em `/docs`.
-- **Testes**: Testes unitários escritos com [Pytest](https://docs.pytest.org/).
+📋 Listagem de Tarefas: Endpoints para listar todas as tarefas ou filtrar por status.
 
-## Como Rodar a Aplicação
+🔄 Atualização de Tarefas: Permite a atualização dos detalhes de uma tarefa específica, incluindo a alteração do status.
 
-### Usando Docker
+❌ Exclusão de Tarefas: Endpoints para excluir tarefas específicas.
 
-Este projeto possui uma imagem Docker hospedada no GitHub Container Registry (GHCR). Para executar a aplicação, é necessário baixar a imagem e rodar o contêiner. Por padrão, a aplicação utiliza o banco de dados **SQLite** e está configurada para rodar na porta **8000**.
+🚀 Tecnologias Utilizadas
 
-1. **Baixar e rodar a imagem Docker**:
+Framework: FastAPI
 
-   ```sh
-   docker run -d -p 8000:8000 ghcr.io/tarciopassosfreitas/todolistapi:latest
-   ```
+Banco de Dados: SQLite ou PostgreSQL, utilizando SQLAlchemy como ORM.
 
-2. **Configurar o banco de dados**:
-   - Por padrão, a aplicação utiliza **SQLite**.
-   - Para utilizar **PostgreSQL**, passe as seguintes variáveis de ambiente:
+Validação e Tipagem: Utilização do Pydantic para validação e tipagem dos dados.
 
-   ```sh
-   docker run -p 8000:8000 \
-      -e DATABASE_DIALECT=postgresql \
-      -e DATABASE_HOSTNAME=localhost \
-      -e DATABASE_NAME=todolist \
-      -e DATABASE_PORT=5432 \
-      -e DATABASE_USERNAME=postgres \
-      -e DATABASE_PASSWORD=DB_PASS_DEV \
-      ghcr.io/seu-usuario/todolist-api
-   ```
+Documentação Automática: Documentação gerada automaticamente pelo FastAPI, acessível em /docs.
 
-3. **Dica**: Caso o PostgreSQL esteja rodando em um contêiner Docker, coloque ambos os contêineres na mesma rede.
+Testes: Testes unitários escritos com Pytest.
 
-### Executando Localmente
+🛠️ Como Rodar a Aplicação
 
-1. **Clone o repositório**:
+🐳 Usando Docker
 
-   ```sh
-   git clone https://github.com/seu-usuario/todolist-api.git
-   cd todolist-api
-   ```
+Este projeto possui uma imagem Docker hospedada no GitHub Container Registry (GHCR). Para executar a aplicação, é necessário baixar a imagem e rodar o contêiner. Por padrão, a aplicação utiliza o banco de dados SQLite e está configurada para rodar na porta 8000.
 
-2. **Instale as dependências** (recomenda-se o uso de ambiente virtual):
+Baixar e rodar a imagem Docker:
 
-   ```sh
-   pip install -r requirements.txt
-   ```
+docker run -d -p 8000:8000 ghcr.io/tarciopassosfreitas/todolistapi:latest
 
-3. **Configure o banco de dados**:
-   - Crie um arquivo `.env` na raiz do projeto com o seguinte conteúdo para SQLite (padrão):
+Configurar o banco de dados:
 
-     ```
-     API_VERSION=1.0.0
-     APP_NAME=todolistApi
-     DATABASE_DIALECT=sqlite
-     DATABASE_NAME=/opt/todolist/data/todolist.db
-     DEBUG_MODE=true
-     ```
-   - Ou para PostgreSQL:
+Por padrão, a aplicação utiliza SQLite.
 
-     ```
-     API_VERSION=1.0.0
-     APP_NAME=todolistApi
-     DATABASE_DIALECT=postgresql
-     DATABASE_HOSTNAME=localhost
-     DATABASE_NAME=todolist
-     DATABASE_PORT=5432
-     DATABASE_USERNAME=postgres
-     DATABASE_PASSWORD=DB_PASS_DEV
-     DEBUG_MODE=true
-     ```
+Para utilizar PostgreSQL, passe as seguintes variáveis de ambiente:
 
-4. **Execute a aplicação**:
+docker run -p 8000:8000 \
+   -e DATABASE_DIALECT=postgresql \
+   -e DATABASE_HOSTNAME=localhost \
+   -e DATABASE_NAME=todolist \
+   -e DATABASE_PORT=5432 \
+   -e DATABASE_USERNAME=postgres \
+   -e DATABASE_PASSWORD=DB_PASS_DEV \
+   ghcr.io/seu-usuario/todolist-api
 
-   ```sh
-   uvicorn main:app --host 0.0.0.0 --port 8000
-   ```
+Dica: Caso o PostgreSQL esteja rodando em um contêiner Docker, coloque ambos os contêineres na mesma rede.
 
-## Documentação da API
+💻 Executando Localmente
 
-A documentação interativa da API está disponível em [http://localhost:8000/docs](http://localhost:8000/docs), onde você pode explorar todos os endpoints, testar requisições e visualizar os esquemas de dados.
+Clone o repositório:
 
-## Testes
+git clone https://github.com/TarcioPassosFreitas/todolistApi.git
+cd todolistApi
 
-O projeto possui testes unitários escritos com **Pytest**. Para rodar os testes, execute o comando abaixo:
+Instale as dependências (recomenda-se o uso de ambiente virtual):
 
-```sh
+pip install -r requirements.txt
+
+Configure o banco de dados:
+
+Crie um arquivo .env na raiz do projeto com o seguinte conteúdo para SQLite (padrão):
+
+API_VERSION=1.0.0
+APP_NAME=todolistApi
+DATABASE_DIALECT=sqlite
+DATABASE_NAME=/opt/todolist/data/todolist.db
+DEBUG_MODE=true
+
+Ou para PostgreSQL:
+
+API_VERSION=1.0.0
+APP_NAME=todolistApi
+DATABASE_DIALECT=postgresql
+DATABASE_HOSTNAME=localhost
+DATABASE_NAME=todolist
+DATABASE_PORT=5432
+DATABASE_USERNAME=postgres
+DATABASE_PASSWORD=DB_PASS_DEV
+DEBUG_MODE=true
+
+Execute a aplicação:
+
+uvicorn main:app --host 0.0.0.0 --port 8000
+
+📄 Documentação da API
+
+A documentação interativa da API está disponível em http://localhost:8000/docs, onde você pode explorar todos os endpoints, testar requisições e visualizar os esquemas de dados.
+
+✅ Testes
+
+O projeto possui testes unitários escritos com Pytest. Para rodar os testes, execute o comando abaixo:
+
 pytest --cov=.
-```
 
-- Os dados de testes são gerados com o pacote [Faker](https://faker.readthedocs.io/).
-- Para verificar a cobertura dos testes, utilize `pytest-cov`.
+Os dados de testes são gerados com o pacote Faker.
 
-## Como Contribuir
+Para verificar a cobertura dos testes, utilize pytest-cov.
 
-Este projeto segue boas práticas de **código limpo** e **arquitetura limpa**, evitando repetições desnecessárias. Qualquer contribuição para melhorar o projeto é bem-vinda!
+🤝 Como Contribuir
 
-1. **Fork o repositório**.
-2. **Crie uma branch** para a sua feature ou correção.
-3. **Envie um pull request** para revisão.
+Este projeto segue boas práticas de código limpo e arquitetura limpa, evitando repetições desnecessárias. Qualquer contribuição para melhorar o projeto é bem-vinda!
 
-## Requisitos
+Fork o repositório.
 
-### Requisitos Técnicos
-- **Framework**: FastAPI para a construção da API.
-- **Banco de Dados**: SQLite (padrão) ou PostgreSQL.
-- **ORM**: SQLAlchemy.
-- **Validação e Tipagem**: Pydantic.
-- **Documentação**: Fornecida pelo FastAPI.
-- **Testes Unitários**: Pytest.
+Crie uma branch para a sua feature ou correção.
 
-### Requisitos Funcionais
-- Criação, Listagem, Atualização e Exclusão de Tarefas.
-- Filtros de listagem por status de tarefa.
+Envie um pull request para revisão.
 
-### Critérios de Avaliação
-- **Qualidade do Código**: Clareza, organização e boas práticas.
-- **Funcionalidade Completa**: Todas as funcionalidades estão implementadas.
-- **Uso do FastAPI**: Recursos do framework bem aproveitados.
-- **Testes**: Testes unitários escritos, com alta cobertura.
-- **Documentação**: Completa e clara.
+📋 Requisitos
 
-## Dependências do Projeto
+Requisitos Técnicos
 
-As dependências estão listadas no arquivo `requirements.txt` e incluem:
+Framework: FastAPI para a construção da API.
 
-- `fastapi==0.115.5`
-- `uvicorn==0.32.0`
-- `SQLAlchemy~=2.0.36`
-- `pydantic==2.10.0`
-- `pydantic-settings==2.6.1`
-- `psycopg2-binary==2.9.10`
-- `pytest==8.3.3`
-- `pytest-cov==6.0.0`
-- `python-dotenv==1.0.1`
-- `flake8==7.1.1`
-- `black==24.10.0`
-- `httpx==0.27.2`
-- `Faker==33.0.0`
+Banco de Dados: SQLite (padrão) ou PostgreSQL.
 
-## Licença
+ORM: SQLAlchemy.
+
+Validação e Tipagem: Pydantic.
+
+Documentação: Fornecida pelo FastAPI.
+
+Testes Unitários: Pytest.
+
+Requisitos Funcionais
+
+Criação, Listagem, Atualização e Exclusão de Tarefas.
+
+Filtros de listagem por status de tarefa.
+
+Critérios de Avaliação
+
+Qualidade do Código: Clareza, organização e boas práticas.
+
+Funcionalidade Completa: Todas as funcionalidades estão implementadas.
+
+Uso do FastAPI: Recursos do framework bem aproveitados.
+
+Testes: Testes unitários escritos, com alta cobertura.
+
+Documentação: Completa e clara.
+
+📦 Dependências do Projeto
+
+As dependências estão listadas no arquivo requirements.txt e incluem:
+
+fastapi==0.115.5
+
+uvicorn==0.32.0
+
+SQLAlchemy~=2.0.36
+
+pydantic==2.10.0
+
+pydantic-settings==2.6.1
+
+psycopg2-binary==2.9.10
+
+pytest==8.3.3
+
+pytest-cov==6.0.0
+
+python-dotenv==1.0.1
+
+flake8==7.1.1
+
+black==24.10.0
+
+httpx==0.27.2
+
+Faker==33.0.0
+
+📜 Licença
 
 Este projeto é distribuído sob a licença MIT. Sinta-se à vontade para usá-lo e modificá-lo conforme necessário.
 
-—--
-Espero que isso seja exatamente o que você precisa para seu repositório no GitHub! Se precisar de algo mais ou ajustes adicionais, é só falar.
-
+Espero que isso seja exatamente o que você precisa para seu repositório no GitHub! Se precisar de algo mais ou ajustes adicionais, é só falar. 😊
