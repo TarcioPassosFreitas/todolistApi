@@ -1,0 +1,113 @@
+# To-Do List API
+
+Bem-vindo à **To-Do List API**, uma aplicação robusta e modular desenvolvida com **FastAPI** para gerenciar tarefas. Esta API permite criar, listar, atualizar e excluir tarefas de maneira eficiente, com suporte a bancos de dados relacionais como SQLite e PostgreSQL. O projeto segue boas práticas de desenvolvimento e princípios de arquitetura limpa, garantindo código organizado, reutilizável e fácil de entender.
+
+---
+
+## 📋 Funcionalidades
+
+- **Criação de Tarefas**:
+  - Permite criar novas tarefas com os seguintes campos:
+    - `title`: Título da tarefa (obrigatório e único).
+    - `description`: Descrição opcional.
+    - `created_at`: Data de criação (preenchido automaticamente, se não fornecido).
+    - `status`: Status da tarefa (`pending`, `in progress`, `completed`).
+
+- **Listagem de Tarefas**:
+  - Lista todas as tarefas cadastradas.
+  - Suporte a paginação e filtro por `status`.
+
+- **Atualização de Tarefas**:
+  - Atualiza os detalhes de uma tarefa específica, incluindo:
+    - Título.
+    - Descrição.
+    - Status.
+
+- **Exclusão de Tarefas**:
+  - Permite excluir tarefas específicas pelo `id`.
+
+---
+
+## 🚀 Tecnologias Utilizadas
+
+- **Framework**: FastAPI
+- **Banco de Dados**:
+  - SQLite (default) ou PostgreSQL (configurável via `.env`).
+- **ORM**: SQLAlchemy
+- **Validação e Tipagem**: Pydantic
+- **Testes**: Pytest com suporte a `pytest-cov` e dados simulados com Faker.
+- **Linter e Formatação**: Flake8 e Black.
+
+---
+
+## 🛠️ Como Executar o Projeto
+
+### 1. Clonando o Repositório
+
+```bash
+git clone https://github.com/seu-usuario/todolist-api.git
+cd todolist-api
+
+### 2. Configuração do Ambiente Virtual
+ - Crie um ambiente virtual e ative-o:
+
+```bash
+python -m venv venv
+source venv/bin/activate  # Linux/MacOS
+venv\Scripts\activate     # Windows
+
+### 3. Instalando Dependências
+ - Instale as dependências listadas em requirements.txt:
+
+```bash
+pip install -r requirements.txt
+
+### 4. Configuração do Banco de Dados
+ - *Usando SQLite (Padrão)*
+  - A configuração padrão usa SQLite. Nenhuma configuração adicional é necessária.
+ - *Usando PostgreSQL*
+  - Para usar PostgreSQL, configure o arquivo .env com as variáveis de ambiente apropriadas:
+
+```bash
+API_VERSION=1.0.0
+APP_NAME=todolistApi
+DATABASE_DIALECT=postgresql
+DATABASE_HOSTNAME=localhost
+DATABASE_NAME=todolist
+DATABASE_PORT=5432
+DATABASE_USERNAME=postgres
+DATABASE_PASSWORD=DB_PASS_DEV
+DEBUG_MODE=true
+
+### 5. Executando a Aplicação
+ - Inicie o servidor com Uvicorn por linha comando ou startando a main que já está configurada
+
+```bash
+uvicorn main:app --host 0.0.0.0 --port 8000 --reload
+
+Acesse a API em: http://127.0.0.1:8000
+Documentação automática disponível em: http://127.0.0.1:8000/docs
+
+---
+
+## 🧪 Testes
+## Executando os Testes
+ - Rode os testes unitários com *pytest*
+
+```bash
+pytest --cov
+
+##Gerando Relatório de Cobertura
+ - Para visualizar a cobertura de testes:
+
+```bash
+pytest --cov --cov-report=html
+
+ - Abra o arquivo gerado em htmlcov/index.html no navegador.
+
+
+
+
+
+
+
